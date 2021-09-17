@@ -16,6 +16,7 @@ app.get('/', (request, response) => {
 });
 // Não remover esse end-point, ele é necessário para o avaliador
 
+app.use('/', require('./controllers/LoginUserController').router);
 app.use('/', require('./controllers/CreateUserController').router);
 
 module.exports = app;
