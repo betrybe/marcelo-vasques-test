@@ -1,7 +1,6 @@
 const express = require('express');
 
 const router = express.Router();
-
 const UserService = require('../services/userService');
 
 router.post('/users', async (request, response) => {
@@ -14,6 +13,10 @@ router.post('/users', async (request, response) => {
   const userService = await UserService.insert(user);
 
   return response.status(userService.status).send(userService.return);
+});
+
+router.get('/users', async (request, response) => {
+  response.json(await UserService.getAll(request));
 });
 
 module.exports = {

@@ -6,6 +6,10 @@ class UserService {
     const inserted = await UserModel.insert(insertdata);
     return { status: 201, return: inserted };
   }
+
+  static async getAll() {
+    return UserModel.findAll();
+  }
 }
 
 module.exports = UserService;
