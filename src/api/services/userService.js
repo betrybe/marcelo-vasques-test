@@ -10,6 +10,10 @@ class UserService {
   static async getAll() {
     return UserModel.findAll();
   }
+
+  static async getById(id) {
+    return UserModel.findByEmail(id);
+  }
 }
 
 module.exports = UserService;

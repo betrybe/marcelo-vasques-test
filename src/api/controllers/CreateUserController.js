@@ -19,6 +19,12 @@ router.get('/users', async (request, response) => {
   response.json(await UserService.getAll(request));
 });
 
+router.get('/users/:id', async (request, response) => {
+  const id = parseInt(request.params.id, 10);
+
+  response.json(await UserService.getById(id));
+});
+
 module.exports = {
   router,
 };
