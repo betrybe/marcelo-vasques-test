@@ -14,6 +14,10 @@ class UserService {
   static async getById(id) {
     return UserModel.findByEmail(id);
   }
+
+  static async getByEmail(login) {
+    return UserModel.findByEmail(login);
+  }
 }
 
 module.exports = UserService;

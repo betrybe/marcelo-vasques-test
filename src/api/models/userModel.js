@@ -24,5 +24,11 @@ class UserModel {
 
     return user[0];
   }
+
+  static async findByEmail(email) {
+    const collect = await collection('users');
+    const user = await collect.find({ email }).toArray();
+    return user.length > 0 ? user[0] : null;
+  }
 }
 module.exports = UserModel;
