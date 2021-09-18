@@ -10,7 +10,7 @@ const uploadImageConfig = require('../config/uploadImage');
 const recipesRouter = Router();
 
 recipesRouter.post('/', ensureAuthenticated, RecipesController.create);
-recipesRouter.get('/', RecipesController.index);
+recipesRouter.get('/', RecipesController.list);
 recipesRouter.get('/:id', RecipesController.show);
 recipesRouter.put('/:id', ensureAuthenticated, allowRecipe, RecipesController.update);
 recipesRouter.delete('/:id', ensureAuthenticated, allowRecipe, RecipesController.delete);
