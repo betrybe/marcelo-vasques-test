@@ -1,11 +1,12 @@
 const User = require('../models/User');
+const GetErrors = require('../errors/getErrors');
 
 class CreateUserService {
   static async execute({ name, email, password }) {
     const userAlreadyExists = await User.findOne({ email });
 
     if (userAlreadyExists) {
-      throw new Error('Email already registered', 409);
+      throw new GetErrors('Email already registered', 409);
     }
   
     const user = await User.create({

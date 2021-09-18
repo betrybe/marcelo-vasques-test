@@ -1,5 +1,6 @@
 const Joi = require('joi');
 
+const GetErrors = require('../errors/getErrors');
 const CreateUserService = require('../services/CreateUserService');
 
 class UsersController {
@@ -15,10 +16,11 @@ class UsersController {
     const { error } = schema.validate({ name, email, password });
 
     if (error) {
-      throw new Error('Invalid entries. Try again.', 400);
+      throw new GetErrors('Invalid entries. Try again.', 400);
     }
 
     const user = await CreateUserService.execute({ name, email, password });
+    
     return response.status(201).json({ user });
   }
 }
