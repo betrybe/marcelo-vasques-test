@@ -18,10 +18,8 @@ class UsersAdminController {
     if (error) {
       throw new GetErrors('Invalid entries. Try again.', 400);
     }
-
-    const user = await CreateAdminUserService.execute({ name, email, password });
-
-    return response.status(201).json({ user });
+      const user = await CreateAdminUserService.execute({ name, email, password });
+      return response.status(201).json({ user });    
   }
 }
 

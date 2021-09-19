@@ -16,11 +16,9 @@ class SessionsController {
 
     if (error) {
       throw new GetErrors('Invalid entries. Try again.', 400);
-    }
-
+    }    
     const { token } = await AuthenticateUserService.execute({ email, password });
-
-    return response.json({ token });
+    return response.json({ token });    
   }
 }
 

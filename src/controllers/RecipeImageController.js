@@ -6,7 +6,6 @@ class RecipeImageController {
     const imageName = request.file.filename;
 
     const recipe = await UpdateImageRecipeService.execute({ recipeId, imageName });
-
     return response.json(recipe);
   }
 }

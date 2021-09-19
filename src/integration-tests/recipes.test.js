@@ -1,22 +1,21 @@
 const { connection, connect } = require('mongoose');
 const { expect } = require('chai');
-const { join, resolve } = require('path');
+const { resolve } = require('path');
 const fs = require('fs');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-
-require('dotenv').config({
-  path: join(__dirname, '..', '..', '.env.test'),
-});
 
 const app = require('../api/app');
 
 chai.should();
 chai.use(chaiHttp);
 
+const MONGO_DB_URL = 'mongodb://localhost:27017';
+const DB_NAME = 'Cookmaster';
+
 describe('Create a new recipe', () => {
   before(done => {
-    connect(`${process.env.MONGO_DB_URL}/${process.env.DB_NAME}`)
+    connect(`${MONGO_DB_URL}/${DB_NAME}`)
       .then(() => done())
       .catch((err) => done(err));
   });
@@ -174,7 +173,7 @@ describe('Create a new recipe', () => {
 
 describe('List recipes', () => {
   before(done => {
-    connect(`${process.env.MONGO_DB_URL}/${process.env.DB_NAME}`)
+    connect(`${MONGO_DB_URL}/${DB_NAME}`)
       .then(() => done())
       .catch((err) => done(err));
   });
@@ -269,7 +268,7 @@ describe('Show recipe', () => {
   let recipeId;
 
   before(done => {
-    connect(`${process.env.MONGO_DB_URL}/${process.env.DB_NAME}`)
+    connect(`${MONGO_DB_URL}/${DB_NAME}`)
       .then(() => done())
       .catch((err) => done(err));
   });
@@ -363,7 +362,7 @@ describe('Update a recipe', () => {
   let recipeId;
 
   before(done => {
-    connect(`${process.env.MONGO_DB_URL}/${process.env.DB_NAME}`)
+    connect(`${MONGO_DB_URL}/${DB_NAME}`)
       .then(() => done())
       .catch((err) => done(err));
   });
@@ -555,7 +554,7 @@ describe('Delete a recipe', () => {
   let recipeId;
 
   before(done => {
-    connect(`${process.env.MONGO_DB_URL}/${process.env.DB_NAME}`)
+    connect(`${MONGO_DB_URL}/${DB_NAME}`)
       .then(() => done())
       .catch((err) => done(err));
   });
@@ -699,7 +698,7 @@ describe('Create an image for a recipe', () => {
   let recipeId;
 
   before(done => {
-    connect(`${process.env.MONGO_DB_URL}/${process.env.DB_NAME}`)
+    connect(`${MONGO_DB_URL}/${DB_NAME}`)
       .then(() => done())
       .catch((err) => done(err));
   });
